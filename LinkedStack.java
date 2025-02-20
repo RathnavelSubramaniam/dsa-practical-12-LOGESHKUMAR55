@@ -9,23 +9,31 @@ public class LinkedStack {
         }
     }
     Node top;
-    LinkedStack() 
-    { 
-        this.top = null; 
-        
-    }
-    public boolean isEmpty()
+    LinkedStack()
     {
-        // TYPE YOUR CODE HERE
+        this.top = null;
+       
     }
-    public void push(int data) 
-    {
-         // TYPE YOUR CODE HERE    
+    public boolean isEmpty() {
+    if (top == null) {
+        return true;
+    }
+    return false;
 }
-    public int pop() 
-    {
-        // TYPE YOUR CODE HERE
+public void push(int data) {
+    Node newNode = new Node(data);
+    newNode.next = top;
+    top = newNode;
+}
+public int pop() {
+    if (isEmpty()) {
+        System.out.println("Stack Underflow");
+        return -1; // or any other default value
     }
+    int data = top.data;
+    top = top.next;
+    return data;
+}
      public static void main(String[] args) {
         LinkedStack stack = new LinkedStack();
         Scanner scanner = new Scanner(System.in);
@@ -47,11 +55,11 @@ do
     System.out.println("1.PUSH");
     System.out.println("2.POP");
     System.out.println("3.EXIT");
-    System.out.println("ENTER YOUR CHOICE:"); 
+    System.out.println("ENTER YOUR CHOICE:");
     ch= scanner.nextInt();
     switch(ch)
     {
-        case 1: 
+        case 1:
             System.out.println("ENTER THE ELEMENT TO PUSH INTO STACK:");
             data=scanner.nextInt();
             stack.push(data);
@@ -83,4 +91,5 @@ public void displayStack() {
     System.out.println("null");
 }
 }
+
 
